@@ -16,7 +16,7 @@ public class ModeloUsuario extends Conector {
 		ArrayList <Usuario> usuarios = new ArrayList <>();
 		Usuario usuario = new Usuario();
 		try {
-			prt = con.prepareStatement("SELECT * FROM `usuarios` ");
+			prt = con.prepareStatement("SELECT id, nombre FROM usuarios ");
 			ResultSet resultado = prt.executeQuery();
 			
 			
@@ -49,6 +49,36 @@ public class ModeloUsuario extends Conector {
 		}
 		
 		
+		
+		
+	}
+	
+	public Usuario getUsuario (int id) {
+		
+		PreparedStatement prt;
+		
+		Usuario usuario = new Usuario();
+		
+		
+		try {
+			prt = con.prepareStatement("SELECT id, nombre FROM usuarios  WHERE id=?");
+			prt.setInt(1, id);
+			
+			ResultSet result = prt.executeQuery();
+			while(result.next()) {
+				usuario.setId(result.getInt(1));
+				usuario.setNombre(result.getString(2));
+				return usuario;	
+			}	
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return usuario;	
+		
+			
 		
 		
 	}
