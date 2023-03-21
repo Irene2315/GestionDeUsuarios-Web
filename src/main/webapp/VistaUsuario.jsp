@@ -15,7 +15,7 @@
 <p class="fw-bold" >Id: <% out.print(usuario.getId()); %></p>
 <p class="fw-bold" >Nombre: <% out.print(usuario.getNombre()); %></p>
 
-
+<a href="VerUsuarios" class="btn btn-primary">Volver</a>
 
 </body>
 </html>
