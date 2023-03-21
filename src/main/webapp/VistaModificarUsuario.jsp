@@ -11,13 +11,13 @@
 <body>
 
 <% Usuario usuario = (Usuario)  request.getAttribute("usuario"); %>
-<h1> Usuario Modificar</h1>
+<h1 class="fw-bold" > Modificar Usuario</h1>
 
 <form method="POST" action="ModificarUsuario">
-		<p>Id: <% out.print(usuario.getId()); %>
+		<p class="fw-bold">Id: <% out.print(usuario.getId()); %>
 		<input type="hidden" name="id" value="<% out.print(usuario.getId()); %>"/> <br> </p>
 		
-		<p>Nombre:
+		<p class="fw-bold">Nombre:
 		<input type="text" name="nombre" value="<% out.print(usuario.getNombre()); %>"/> <br></p>
 		<br>
 		<br>

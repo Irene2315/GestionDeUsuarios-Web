@@ -11,9 +11,10 @@
 </head>
 <body>
 <% Usuario usuario = (Usuario)  request.getAttribute("usuario"); %>
-<h1>DATOS DEL USUARIO</h1>
-<p>Id: <% out.print(usuario.getId()); %></p>
-<p>Nombre: <% out.print(usuario.getNombre()); %></p>
+<h1 class="fw-bold" >Datos Del Usuario</h1>
+<p class="fw-bold" >Id: <% out.print(usuario.getId()); %></p>
+<p class="fw-bold" >Nombre: <% out.print(usuario.getNombre()); %></p>
+
 
 
 </body>
