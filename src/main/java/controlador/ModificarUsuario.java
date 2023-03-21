@@ -1,7 +1,6 @@
 package controlador;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -14,16 +13,16 @@ import clases.Usuario;
 import modelo.ModeloUsuario;
 
 /**
- * Servlet implementation class Eliminar
+ * Servlet implementation class ModidicarUsuario
  */
-@WebServlet("/Eliminar")
-public class Eliminar extends HttpServlet {
+@WebServlet("/ModificarUsuario")
+public class ModificarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Eliminar() {
+    public ModificarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,45 +31,48 @@ public class Eliminar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//coger la id de la linea que he selecionado eliminar
-		//enviarle el id a la base de datos para que elimine el odjeto
-		//visualizar la tabla con los cambios realizados (ver usuarios)
-		
-		
-		
-		
-	ModeloUsuario usuarioM = new ModeloUsuario();
-	
-	usuarioM.conectar();
-		
-	int id = Integer.parseInt(request.getParameter("id"));
-	
-	usuarioM.eliminarUsuario(id);
-	
-	
-	//visualizar
-	ArrayList <Usuario> usuarios = new ArrayList<>();
-	
-	usuarios= usuarioM.getUsuarios();
-	
-	usuarioM.cerrar();
 
-	request.setAttribute("usuarios", usuarios);
-	
-	
-	request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
-	
-	
-	
+		ModeloUsuario usuarioM = new ModeloUsuario();
+		
+		usuarioM.conectar();
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		Usuario usuario = new Usuario();
+		
+		usuario = usuarioM.getUsuario(id);
+		
+		
+		request.setAttribute("usuario", usuario);
+		
+		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
+		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Usuario usuario = new Usuario();
+		ModeloUsuario usuarioM = new ModeloUsuario();
+		
+		
+		int id = Integer.parseInt( request.getParameter("id"));
+		String nombre =request.getParameter("nombre");
+		
+		usuario.setId(id);
+		usuario.setNombre(nombre);
+		
+		
+		usuarioM.conectar();
+		
+		usuarioM.modificarUsuario(usuario);
+		
+		
+		response.sendRedirect("VerUsuarios");
+	}
 	}
 
-}
+

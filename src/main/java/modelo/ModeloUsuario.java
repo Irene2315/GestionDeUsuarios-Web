@@ -82,6 +82,47 @@ public class ModeloUsuario extends Conector {
 		
 		
 	}
+	
+	public void modificarUsuario (Usuario usuario) {
+		
+		PreparedStatement prt;
+		
+		
+		try {
+			prt = con.prepareStatement("UPDATE usuarios SET nombre=? WHERE id=?");
+			
+			prt.setString(1, usuario.getNombre());
+			prt.setInt(2, usuario.getId());
+			
+			prt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	public void registrarUsuario(Usuario usuario) {
+		
+		PreparedStatement prt;
+		
+		
+		
+		try {
+			prt = con.prepareStatement("INSERT INTO usuarios (nombre) VALUES (?)");
+			prt.setString(1,usuario.getNombre() );
+			
+			prt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 		
 		
 	

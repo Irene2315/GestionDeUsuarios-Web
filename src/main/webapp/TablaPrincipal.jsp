@@ -23,6 +23,7 @@
       <th scope="col">Nombre</th>
       <th scope="col"></th>
       <th scope="col"></th>
+      <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
      
     </tr>
   </thead>
@@ -36,8 +37,9 @@
       <th scope="row"></th>
       <td><% out.println(usuario.getId()); %></td>
       <td><% out.println(usuario.getNombre()); %></td>
-      <td><a href="VerUsuario?id=<% out.println(usuario.getId()); %>">Ver</a></td>
-      <td><a href="Eliminar?id=<% out.println(usuario.getId()); %>">eliminar </a> </td>
+      <td><a href="VerUsuario?id=<% out.println(usuario.getId()); %>" class="btn btn-primary ">Ver</a></td>
+      <td><a href="ModificarUsuario?id=<% out.println(usuario.getId()); %>" class="btn btn-secondary ">Modificar </a> </td>
+      <td><a href="Eliminar?id=<% out.println(usuario.getId()); %>" class="btn btn-danger" >eliminar </a> </td>
     </tr>
     <%
 		}%>  
