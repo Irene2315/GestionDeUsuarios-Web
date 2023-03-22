@@ -16,7 +16,7 @@ public class ModeloUsuario extends Conector {
 		ArrayList <Usuario> usuarios = new ArrayList <>();
 		Usuario usuario = new Usuario();
 		try {
-			prt = con.prepareStatement("SELECT id, nombre FROM usuarios ");
+			prt = con.prepareStatement("SELECT id, nombre,password FROM usuarios ");
 			ResultSet resultado = prt.executeQuery();
 			
 			
@@ -25,6 +25,7 @@ public class ModeloUsuario extends Conector {
 				usuario = new Usuario();
 				usuario.setId(resultado.getInt(1));
 				usuario.setNombre(resultado.getString(2));
+				usuario.setPassword(resultado.getString(3));
 				usuarios.add(usuario);
 			}
 		} catch (SQLException e) {
@@ -61,13 +62,14 @@ public class ModeloUsuario extends Conector {
 		
 		
 		try {
-			prt = con.prepareStatement("SELECT id, nombre FROM usuarios  WHERE id=?");
+			prt = con.prepareStatement("SELECT id, nombre,password FROM usuarios  WHERE id=?");
 			prt.setInt(1, id);
 			
 			ResultSet result = prt.executeQuery();
 			while(result.next()) {
 				usuario.setId(result.getInt(1));
 				usuario.setNombre(result.getString(2));
+				usuario.setPassword(result.getString(3));
 				return usuario;	
 			}	
 			
@@ -89,10 +91,12 @@ public class ModeloUsuario extends Conector {
 		
 		
 		try {
-			prt = con.prepareStatement("UPDATE usuarios SET nombre=? WHERE id=?");
+			prt = con.prepareStatement("UPDATE usuarios SET nombre=?, password=? WHERE id=?");
+			
 			
 			prt.setString(1, usuario.getNombre());
-			prt.setInt(2, usuario.getId());
+			prt.setString(2, usuario.getPassword());
+			prt.setInt(3, usuario.getId());
 			
 			prt.executeUpdate();
 			

@@ -14,6 +14,7 @@
 <h1 class="fw-bold" >Datos Del Usuario</h1>
 <p class="fw-bold" >Id: <% out.print(usuario.getId()); %></p>
 <p class="fw-bold" >Nombre: <% out.print(usuario.getNombre()); %></p>
+<p class="fw-bold" >Contraseña: <% out.print(usuario.getPassword()); %></p>
 
 <a href="VerUsuarios" class="btn btn-primary">Volver</a>
 

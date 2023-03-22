@@ -18,6 +18,9 @@
 		<p>Nombre:
 		<input type="text" name="nombre" /> <br></p>
 		<br>
+		<p>Contraseña:
+		<input type="password" name="password" /> <br></p>
+		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Guardar"/>
 	

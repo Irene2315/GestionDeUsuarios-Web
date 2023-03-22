@@ -1,7 +1,7 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,6 +44,7 @@ public class ModificarUsuario extends HttpServlet {
 		
 		
 		request.setAttribute("usuario", usuario);
+		request.setAttribute("password", usuario);
 		
 		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
 		
@@ -61,9 +62,11 @@ public class ModificarUsuario extends HttpServlet {
 		
 		int id = Integer.parseInt( request.getParameter("id"));
 		String nombre =request.getParameter("nombre");
+		String password = request.getParameter("password");
 		
 		usuario.setId(id);
 		usuario.setNombre(nombre);
+		usuario.setPassword(password);
 		
 		
 		usuarioM.conectar();

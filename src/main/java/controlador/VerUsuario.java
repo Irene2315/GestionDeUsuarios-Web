@@ -34,6 +34,7 @@ public class VerUsuario extends HttpServlet {
 		usuarioM.conectar();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
+		String password = request.getParameter("password");
 		
 		Usuario usuario = new Usuario();
 		

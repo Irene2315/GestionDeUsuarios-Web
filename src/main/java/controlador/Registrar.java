@@ -47,8 +47,10 @@ public class Registrar extends HttpServlet {
 		ModeloUsuario usuarioM = new ModeloUsuario();
 		
 		String nombre =request.getParameter("nombre");
+		String password=request.getParameter("password");
 		
 		usuario.setNombre(nombre);
+		usuario.setPassword(password);
 		
 		usuarioM.conectar();
 		
