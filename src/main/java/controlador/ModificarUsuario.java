@@ -44,7 +44,7 @@ public class ModificarUsuario extends HttpServlet {
 		
 		
 		request.setAttribute("usuario", usuario);
-		request.setAttribute("password", usuario);
+		
 		
 		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
 		

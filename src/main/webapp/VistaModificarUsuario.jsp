@@ -23,6 +23,7 @@
 		<p class="fw-bold">Contraseña:
 		<input type="text" name="password" value="<% out.print(usuario.getPassword()); %>"/> <br></p>
 		<br>
+		
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Enviar"/>
 		
