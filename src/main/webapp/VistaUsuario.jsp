@@ -15,6 +15,7 @@
 <p class="fw-bold" >Id: <% out.print(usuario.getId()); %></p>
 <p class="fw-bold" >Nombre: <% out.print(usuario.getNombre()); %></p>
 <p class="fw-bold" >Contraseña: <% out.print(usuario.getPassword()); %></p>
+<p class="fw-bold" >Fecha Login: <% out.print(usuario.getFechaLogin()); %></p>
 
 <a href="VerUsuarios" class="btn btn-primary">Volver</a>
 

@@ -16,7 +16,7 @@ public class ModeloUsuario extends Conector {
 		ArrayList <Usuario> usuarios = new ArrayList <>();
 		Usuario usuario = new Usuario();
 		try {
-			prt = con.prepareStatement("SELECT id, nombre,password FROM usuarios ");
+			prt = con.prepareStatement("SELECT id, nombre,password,fecha_login FROM usuarios ");
 			ResultSet resultado = prt.executeQuery();
 			
 			
@@ -26,6 +26,7 @@ public class ModeloUsuario extends Conector {
 				usuario.setId(resultado.getInt(1));
 				usuario.setNombre(resultado.getString(2));
 				usuario.setPassword(resultado.getString(3));
+				usuario.setFechaLogin(resultado.getDate(4));
 				usuarios.add(usuario);
 			}
 		} catch (SQLException e) {
@@ -62,7 +63,7 @@ public class ModeloUsuario extends Conector {
 		
 		
 		try {
-			prt = con.prepareStatement("SELECT id, nombre,password FROM usuarios  WHERE id=?");
+			prt = con.prepareStatement("SELECT id,nombre,password,fecha_login FROM usuarios  WHERE id=?");
 			prt.setInt(1, id);
 			
 			ResultSet result = prt.executeQuery();
@@ -70,6 +71,7 @@ public class ModeloUsuario extends Conector {
 				usuario.setId(result.getInt(1));
 				usuario.setNombre(result.getString(2));
 				usuario.setPassword(result.getString(3));
+				usuario.setFechaLogin(result.getDate(4));
 				return usuario;	
 			}	
 			
