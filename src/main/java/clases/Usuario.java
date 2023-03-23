@@ -17,6 +17,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.password= password;
 		this.fechaLogin=fechaLogin;
+		
 	}
 	
 	

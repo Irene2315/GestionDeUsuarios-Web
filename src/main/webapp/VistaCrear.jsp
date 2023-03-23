@@ -1,4 +1,5 @@
 <%@ page import="clases.Usuario" %>
+<%@  page import="java.sql.Date" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,6 +21,9 @@
 		<br>
 		<p>Contraseña:
 		<input type="password" name="password" /> <br></p>
+		<br>
+		<p>Fecha Login:
+		<input type="date" name="fechaLogin" /> <br></p>
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Guardar"/>

@@ -1,7 +1,10 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,9 +51,23 @@ public class Registrar extends HttpServlet {
 		
 		String nombre =request.getParameter("nombre");
 		String password=request.getParameter("password");
+		SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
+		
+		Date FechaLogin;
+		try {
+			
+			FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
+			usuario.setFechaLogin((java.sql.Date) FechaLogin);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
 		
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
+		
 		
 		usuarioM.conectar();
 		
