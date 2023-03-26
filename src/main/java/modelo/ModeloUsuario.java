@@ -2,6 +2,8 @@ package modelo;
 
 
 
+
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,7 +72,7 @@ public class ModeloUsuario extends Conector {
 			
 			
 			try {
-				prt = con.prepareStatement("SELECT id,nombre,password,fecha_login FROM usuarios  WHERE id=?");
+				prt = con.prepareStatement("SELECT nombre, password, fecha_login FROM usuarios WHERE id=?");
 				prt.setInt(1, id);
 				
 				ResultSet result = prt.executeQuery();
@@ -106,7 +108,7 @@ public class ModeloUsuario extends Conector {
 			prt.setString(1, usuario.getNombre());
 			prt.setString(2, usuario.getPassword());
 			
-			prt.setDate(3,new java.sql.Date (usuario.getFechaLogin().getTime()));
+			prt.setDate(3,new Date (usuario.getFechaLogin().getTime()));
 			
 			prt.setInt(4, usuario.getId());
 			
@@ -130,8 +132,8 @@ public class ModeloUsuario extends Conector {
 		try {
 			prt = con.prepareStatement("INSERT INTO usuarios(nombre,password,fecha_login) VALUES (?,?,?)");
 			prt.setString(1,usuario.getNombre() );
-			prt.setString(1,usuario.getPassword() );
-			prt.setDate(3, new java.sql.Date (usuario.getFechaLogin().getTime()));
+			prt.setString(2,usuario.getPassword() );
+			prt.setDate(3, new Date (usuario.getFechaLogin().getTime()));
 			
 			prt.execute();
 		} catch (SQLException e) {

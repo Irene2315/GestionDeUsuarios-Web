@@ -40,7 +40,7 @@
       <td><% out.println(usuario.getId()); %></td>
       <td><% out.println(usuario.getNombre()); %></td>
       <td><% out.println(usuario.getPassword()); %></td>
-       <td><% out.println(usuario.getFechaLogin()); %></td>
+      <td><% out.println(usuario.getFechaLogin()); %></td>
       <td><a href="VerUsuario?id=<% out.println(usuario.getId()); %>" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=<% out.println(usuario.getId()); %>" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="Eliminar?id=<% out.println(usuario.getId()); %>" class="btn btn-danger" >eliminar </a> </td>

@@ -1,8 +1,9 @@
 package clases;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Usuario {
+	
 	private int id;
 	private String nombre;
 	private String password;

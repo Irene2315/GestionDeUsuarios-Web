@@ -3,7 +3,6 @@ package controlador;
 import java.io.IOException;
 
 
-
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -43,12 +42,13 @@ public class VerUsuarios extends HttpServlet {
 			usuarios= usuarioM.getUsuarios();
 			
 		
+			usuarioM.cerrar();
+			
 			request.setAttribute("usuarios", usuarios);
 			
 			
 			request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
 			
-			response.sendRedirect("VerUsuarios");
 				
 			
 
