@@ -5,6 +5,7 @@ package modelo;
 
 
 import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -72,7 +73,7 @@ public class ModeloUsuario extends Conector {
 			
 			
 			try {
-				prt = con.prepareStatement("SELECT nombre, password, fecha_login FROM usuarios WHERE id=?");
+				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login FROM usuarios WHERE id=?");
 				prt.setInt(1, id);
 				
 				ResultSet result = prt.executeQuery();

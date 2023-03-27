@@ -3,6 +3,8 @@ package controlador;
 import java.io.IOException;
 
 
+
+
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -62,6 +64,7 @@ public class Registrar extends HttpServlet {
 		try {
 			
 			FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
+			
 			usuario.setFechaLogin(FechaLogin);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
