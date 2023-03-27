@@ -1,6 +1,10 @@
 package controlador;
 
 import java.io.IOException;
+
+
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +38,7 @@ public class VerUsuario extends HttpServlet {
 		usuarioM.conectar();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		String password = request.getParameter("password");
+		
 		
 		Usuario usuario = new Usuario();
 		
@@ -58,3 +62,4 @@ public class VerUsuario extends HttpServlet {
 	}
 
 }
+

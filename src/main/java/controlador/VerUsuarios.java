@@ -42,12 +42,13 @@ public class VerUsuarios extends HttpServlet {
 			usuarios= usuarioM.getUsuarios();
 			
 		
+			usuarioM.cerrar();
+			
 			request.setAttribute("usuarios", usuarios);
 			
 			
 			request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
 			
-			response.sendRedirect("VerUsuarios");
 				
 			
 
@@ -64,5 +65,6 @@ public class VerUsuarios extends HttpServlet {
 	
 		
 	}
+
 
 
