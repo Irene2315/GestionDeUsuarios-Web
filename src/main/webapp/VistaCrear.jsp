@@ -1,5 +1,6 @@
-<%@ page import="clases.Usuario" %>
+
 <%@  page import="java.sql.Date" %>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
 </head>
 <body>
 
-<% Usuario usuario = (Usuario)  request.getAttribute("usuario"); %>
+
 <h1 class="fw-bold" > Resgistrar Usuario</h1>
 
 <form method="POST" action="Registrar">

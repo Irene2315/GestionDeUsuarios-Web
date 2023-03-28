@@ -1,5 +1,4 @@
-<%@ page import="clases.Usuario" %>
-<%@  page import="java.sql.Date" %>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,21 +10,21 @@
 </head>
 <body>
 
-<% Usuario usuario = (Usuario)  request.getAttribute("usuario"); %>
+
 <h1 class="fw-bold" > Modificar Usuario</h1>
 
 <form method="POST" action="ModificarUsuario">
-		<p class="fw-bold">Id: <% out.print(usuario.getId()); %>
-		<input type="hidden" name="id" value="<% out.print(usuario.getId()); %>"/> <br> </p>
+		<p class="fw-bold">Id: 
+		<input type="hidden" name="id" value="${usuario.id }"/> <br> </p>
 		
 		<p class="fw-bold">Nombre:
-		<input type="text" name="nombre" value="<% out.print(usuario.getNombre()); %>"/> <br></p>
+		<input type="text" name="nombre" value="${usuario.nombre}"/> <br></p>
 		<br>
 		<p class="fw-bold">Contraseña:
-		<input type="text" name="password" value="<% out.print(usuario.getPassword()); %>"/> <br></p>
+		<input type="text" name="password" value="${usuario.password }"/> <br></p>
 		<br>
 		<p class="fw-bold">Fecha Login:
-		<input type="date" name="fechaLogin" value="<% out.print(usuario.getFechaLogin()); %>"/> <br></p>
+		<input type="date" name="fechaLogin" value="${usuario.fechaLogin }"/> <br></p>
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Enviar"/>
