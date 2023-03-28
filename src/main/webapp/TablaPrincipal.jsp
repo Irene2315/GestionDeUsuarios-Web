@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-
 
 	<table class="table">
 	
@@ -30,30 +29,21 @@
   </thead>
   <tbody>
     
-    
-    <c:forEach items="${usuarios}" var="usuario">
+     <c:forEach items="${usuarios}" var="usuario">
     <tr>
       <th scope="row"></th>
-   
-	 <td>${usuario.id} </td>
-      <td>${usuario.nombre} </td>
-      <td> ${usuario.password}</td>
-      <td> ${usuario.fechaLogin}</td>
-      <td> ${usuario.idRol} </td>
+      <td>${usuario.id}</td>
+      <td>${usuario.nombre}</td>
+      <td>${usuario.password}</td>
+      <td>${usuario.fechaLogin}</td>
+      <td> ${usuario.rol.id} </td>
       
-    <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
+      <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
     </tr>
-     
-	<br>
-</c:forEach>
-
-
     
-     
-      
-   
+    </c:forEach>
     
     
   </tbody>

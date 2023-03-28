@@ -8,21 +8,22 @@ public class Usuario {
 	private String nombre;
 	private String password;
 	private Date fechaLogin;
-	private int idRol;
+	private Rol rol;
 	
-	
-	public Usuario(int id, String nombre, String password, Date fechaLogin, int idRol) {
+	public Usuario(int id, String nombre, String password, Date fechaLogin, Rol rol) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.password = password;
 		this.fechaLogin = fechaLogin;
-		this.idRol = idRol;
+		this.rol = rol;
 	}
-
+	
+	
 	public Usuario() {
 		
 	}
+
 
 	public int getId() {
 		return id;
@@ -64,21 +65,23 @@ public class Usuario {
 	}
 
 
-	public int getIdRol() {
-		return idRol;
+	public Rol getRol() {
+		return rol;
 	}
 
 
-	public void setIdRol(int idRol) {
-		this.idRol = idRol;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", password=" + password + ", fechaLogin=" + fechaLogin
-				+ ", idRol=" + idRol + "]";
+				+ ", rol=" + rol + "]";
 	}
+	
+	
 	
 	 
 	

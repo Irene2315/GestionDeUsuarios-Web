@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import clases.Rol;
 import clases.Usuario;
 import modelo.ModeloUsuario;
 
@@ -74,7 +75,9 @@ public class Registrar extends HttpServlet {
 		}
 			
 		
-		usuario.setIdRol(idRol);
+		Rol rol = new Rol();
+		rol.setId(idRol);
+		usuario.setRol(rol);
 		
 		
 		usuarioM.conectar();

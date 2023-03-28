@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import clases.Rol;
 import clases.Usuario;
 import conexion.Conector;
 
@@ -39,7 +40,9 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(resultado.getString(2));
 					usuario.setPassword(resultado.getString(3));
 					usuario.setFechaLogin(resultado.getDate(4));
-					usuario.setIdRol(resultado.getInt(5));
+					Rol rol = new Rol();
+					rol.setId(resultado.getInt(5));
+					usuario.setRol(rol);
 					usuarios.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -86,7 +89,9 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(result.getString(2));
 					usuario.setPassword(result.getString(3));
 					usuario.setFechaLogin(result.getDate(4));
-					usuario.setIdRol(result.getInt(5));
+					Rol rol = new Rol();
+					rol.setId(result.getInt(5));
+					usuario.setRol(rol);
 					return usuario;	
 				}	
 				
@@ -118,7 +123,7 @@ public class ModeloUsuario extends Conector {
 			
 			prt.setDate(3,new Date (usuario.getFechaLogin().getTime()));
 			
-			prt.setInt(4, usuario.getIdRol());
+			prt.setInt(4, usuario.getRol().getId());
 			prt.setInt(5, usuario.getId());
 			
 			prt.executeUpdate();
@@ -143,7 +148,7 @@ public class ModeloUsuario extends Conector {
 			prt.setString(1,usuario.getNombre() );
 			prt.setString(2,usuario.getPassword() );
 			prt.setDate(3, new Date (usuario.getFechaLogin().getTime()));
-			prt.setInt(4, usuario.getIdRol());
+			prt.setInt(4, usuario.getRol().getId());
 			
 			prt.execute();
 		} catch (SQLException e) {

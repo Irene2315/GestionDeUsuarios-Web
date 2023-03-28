@@ -99,7 +99,7 @@ public class ModificarUsuario extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			usuario.setIdRol(idRol);
+			usuario.setRol(idRol);
 		
 		
 		
