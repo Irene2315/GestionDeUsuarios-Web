@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 
+
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,15 +78,10 @@ public class ModificarUsuario extends HttpServlet {
 			SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
 			Date FechaLogin;
 			
-				try {
-					FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
-					usuario.setFechaLogin( FechaLogin);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				
 			
+			int idRol =Integer.parseInt(request.getParameter("idRol"));
 			
 			
 			
@@ -95,7 +91,15 @@ public class ModificarUsuario extends HttpServlet {
 			usuario.setPassword(password);
 			
 		
-		
+			try {
+				FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
+				usuario.setFechaLogin( FechaLogin);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			usuario.setIdRol(idRol);
 		
 		
 		

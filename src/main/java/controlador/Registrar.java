@@ -58,7 +58,9 @@ public class Registrar extends HttpServlet {
 		
 		Date FechaLogin;
 		
-
+		int idRol =Integer.parseInt(request.getParameter("idRol"));
+		
+		
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
 		try {
@@ -72,7 +74,7 @@ public class Registrar extends HttpServlet {
 		}
 			
 		
-		
+		usuario.setIdRol(idRol);
 		
 		
 		usuarioM.conectar();

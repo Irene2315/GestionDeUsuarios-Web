@@ -14,7 +14,7 @@
 <h1 class="fw-bold" > Modificar Usuario</h1>
 
 <form method="POST" action="ModificarUsuario">
-		<p class="fw-bold">Id: 
+		<p class="fw-bold">Id: ${usuario.id }
 		<input type="hidden" name="id" value="${usuario.id }"/> <br> </p>
 		
 		<p class="fw-bold">Nombre:
@@ -25,6 +25,9 @@
 		<br>
 		<p class="fw-bold">Fecha Login:
 		<input type="date" name="fechaLogin" value="${usuario.fechaLogin }"/> <br></p>
+		<br>
+		<p class="fw-bold">Id rol:
+		<input type="text" name="idRol" value="${usuario.idRol }"/> <br></p>
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Enviar"/>

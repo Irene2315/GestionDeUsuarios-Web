@@ -1,8 +1,7 @@
 
-<%@ page import="clases.Usuario" %>
-    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +21,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Contraseña</th>
       <th scope="col">Fecha_Login</th>
+      <th scope="col">Id_Rol</th>
       <th scope="col"></th>
       <th scope="col"></th>
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
@@ -39,10 +39,11 @@
       <td>${usuario.nombre} </td>
       <td> ${usuario.password}</td>
       <td> ${usuario.fechaLogin}</td>
+      <td> ${usuario.idRol} </td>
       
-    <td><a href="VerUsuario?id= ${ usuario.id} " class="btn btn-primary ">Ver</a></td>
-      <td><a href="ModificarUsuario?id= ${ usuario.id } " class="btn btn-secondary ">Modificar </a> </td>
-      <td><a href="Eliminar?id= ${ usuario.id } " class="btn btn-danger" >eliminar </a> </td>
+    <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
+      <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
+      <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
     </tr>
      
 	<br>

@@ -26,6 +26,9 @@
 		<p>Fecha Login:
 		<input type="date" name="fechaLogin" /> <br></p>
 		<br>
+		<p>Id rol:
+		<input type="text" name="idRol" /> <br></p>
+		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Guardar"/>
 	
