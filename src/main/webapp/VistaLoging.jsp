@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+		<p>INICIAR SESION
 		<form method="POST" action="LoginInicio">
 		
 		<p>Nombre:
@@ -18,7 +19,7 @@
 		
 		
 		
-		<input type="submit" class="btn btn-secondary" value="Guardar"/>
+		<input type="submit" class="btn btn-secondary" value="Loguear"/>
 	
 	
 </form>
