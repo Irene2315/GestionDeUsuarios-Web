@@ -37,9 +37,7 @@ public class VerUsuarios extends HttpServlet {
 			ModeloUsuario usuarioM = new ModeloUsuario();
 			
 			usuarioM.conectar();
-			ArrayList <Usuario> usuarios = new ArrayList<>();
-			
-			usuarios= usuarioM.getUsuarios();
+			ArrayList <Usuario> usuarios = usuarioM.getUsuarios();
 			
 		
 			usuarioM.cerrar();

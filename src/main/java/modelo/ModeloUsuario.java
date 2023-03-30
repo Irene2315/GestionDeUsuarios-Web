@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+
 import clases.Usuario;
 import conexion.Conector;
 
@@ -22,12 +23,16 @@ public class ModeloUsuario extends Conector {
 	
 		
 		public ArrayList<Usuario> getUsuarios (){
+			ModeloRol mRol = new ModeloRol();
+			mRol.setConexion(this.con);
 			
 			PreparedStatement prt;
 			ArrayList <Usuario> usuarios = new ArrayList <>();
 			Usuario usuario = new Usuario();
 			try {
-				prt = con.prepareStatement("SELECT id, nombre,password,fecha_login FROM usuarios ");
+				prt = con.prepareStatement("SELECT id, nombre,password,fecha_login,id_rol FROM usuarios ");
+				
+				
 				ResultSet resultado = prt.executeQuery();
 				
 				
@@ -38,6 +43,11 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(resultado.getString(2));
 					usuario.setPassword(resultado.getString(3));
 					usuario.setFechaLogin(resultado.getDate(4));
+					
+					//debuelve el odjeto de rol
+					usuario.setRol(mRol.getRol(resultado.getInt(5)));
+					
+					
 					usuarios.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -67,14 +77,17 @@ public class ModeloUsuario extends Conector {
 		}
 		
 		public Usuario getUsuario (int id) {
-			
+			ModeloRol mRol = new ModeloRol();
+			mRol.setConexion(this.con);
 			PreparedStatement prt;
 			
 			Usuario usuario = new Usuario();
 			
 			
 			try {
-				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login FROM usuarios WHERE id=?");
+				//SELECT usuarios.id,usuarios.nombre, password, fecha_login,id_rol,roles.id, roles.nombre FROM usuarios INNER join roles on usuarios.id_rol=roles.id WHERE usuarios.id=1; 
+				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login,id_rol FROM usuarios WHERE id=?");
+				
 				prt.setInt(1, id);
 				
 				ResultSet result = prt.executeQuery();
@@ -83,6 +96,9 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(result.getString(2));
 					usuario.setPassword(result.getString(3));
 					usuario.setFechaLogin(result.getDate(4));
+
+					//debuelve el odjeto de rol
+					usuario.setRol(mRol.getRol(result.getInt(5)));
 					return usuario;	
 				}	
 				
@@ -104,7 +120,9 @@ public class ModeloUsuario extends Conector {
 		
 		
 		try {
-			prt = con.prepareStatement("UPDATE usuarios SET nombre=?, password=?,fecha_login=? WHERE id=?");
+			prt = con.prepareStatement("UPDATE usuarios SET nombre=?, password=?,fecha_login=?,id_rol=? WHERE id=?");
+			
+			
 			
 			
 			prt.setString(1, usuario.getNombre());
@@ -112,7 +130,8 @@ public class ModeloUsuario extends Conector {
 			
 			prt.setDate(3,new Date (usuario.getFechaLogin().getTime()));
 			
-			prt.setInt(4, usuario.getId());
+			prt.setInt(4, usuario.getRol().getId());
+			prt.setInt(5, usuario.getId());
 			
 			prt.executeUpdate();
 			
@@ -132,10 +151,11 @@ public class ModeloUsuario extends Conector {
 		
 		
 		try {
-			prt = con.prepareStatement("INSERT INTO usuarios(nombre,password,fecha_login) VALUES (?,?,?)");
+			prt = con.prepareStatement("INSERT INTO usuarios(nombre,password,fecha_login,id_rol) VALUES (?,?,?,?)");
 			prt.setString(1,usuario.getNombre() );
 			prt.setString(2,usuario.getPassword() );
 			prt.setDate(3, new Date (usuario.getFechaLogin().getTime()));
+			prt.setInt(4, usuario.getRol().getId());
 			
 			prt.execute();
 		} catch (SQLException e) {
