@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<p>INICIAR SESION
+		<h1 class="fw-bold" > Inciciar Sesion</h1>
 		<form method="POST" action="LoginInicio">
 		
 		<p>Nombre:
