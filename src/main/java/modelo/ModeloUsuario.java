@@ -113,6 +113,45 @@ public class ModeloUsuario extends Conector {
 			
 			
 		}
+		
+		
+		public Usuario getUsuario (String nombre) {
+			ModeloRol mRol = new ModeloRol();
+			mRol.setConexion(this.con);
+			PreparedStatement prt;
+			
+			Usuario usuario = new Usuario();
+			
+			
+			try {
+				//SELECT usuarios.id,usuarios.nombre, password, fecha_login,id_rol,roles.id, roles.nombre FROM usuarios INNER join roles on usuarios.id_rol=roles.id WHERE usuarios.id=1; 
+				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login,id_rol FROM usuarios WHERE nombre=?");
+				
+				prt.setString(1, nombre);
+				
+				ResultSet result = prt.executeQuery();
+				while(result.next()) {
+					usuario.setId(result.getInt(1));
+					usuario.setNombre(result.getString(2));
+					usuario.setPassword(result.getString(3));
+					usuario.setFechaLogin(result.getDate(4));
+
+					//debuelve el odjeto de rol
+					usuario.setRol(mRol.getRol(result.getInt(5)));
+					return usuario;	
+				}	
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return usuario;	
+			
+				
+			
+			
+		}
 	
 	public void modificarUsuario (Usuario usuario) {
 		
@@ -162,6 +201,38 @@ public class ModeloUsuario extends Conector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+	}
+
+	public String getContrasena(String nombre) {
+		
+		Usuario usuario = new Usuario();
+		
+		try {
+			PreparedStatement prt;
+			
+			prt= con.prepareStatement("SELECT password FROM usuarios WHERE nombre=?");
+			
+			prt.setString(1, nombre);
+			
+			ResultSet result = prt.executeQuery();
+			
+			while(result.next()) {
+			
+				usuario.setPassword(result.getString(1));
+				
+
+				
+				return usuario.getPassword();	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return usuario.getPassword();	
 		
 		
 	}
