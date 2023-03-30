@@ -6,6 +6,7 @@ package modelo;
 
 import java.sql.Date;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
-import clases.Rol;
+
 import clases.Usuario;
 import conexion.Conector;
 
@@ -22,6 +23,8 @@ public class ModeloUsuario extends Conector {
 	
 		
 		public ArrayList<Usuario> getUsuarios (){
+			ModeloRol mRol = new ModeloRol();
+			mRol.setConexion(this.con);
 			
 			PreparedStatement prt;
 			ArrayList <Usuario> usuarios = new ArrayList <>();
@@ -40,9 +43,11 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(resultado.getString(2));
 					usuario.setPassword(resultado.getString(3));
 					usuario.setFechaLogin(resultado.getDate(4));
-					Rol rol = new Rol();
-					rol.setId(resultado.getInt(5));
-					usuario.setRol(rol);
+					
+					//debuelve el odjeto de rol
+					usuario.setRol(mRol.getRol(resultado.getInt(5)));
+					
+					
 					usuarios.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -72,13 +77,15 @@ public class ModeloUsuario extends Conector {
 		}
 		
 		public Usuario getUsuario (int id) {
-			
+			ModeloRol mRol = new ModeloRol();
+			mRol.setConexion(this.con);
 			PreparedStatement prt;
 			
 			Usuario usuario = new Usuario();
 			
 			
 			try {
+				//SELECT usuarios.id,usuarios.nombre, password, fecha_login,id_rol,roles.id, roles.nombre FROM usuarios INNER join roles on usuarios.id_rol=roles.id WHERE usuarios.id=1; 
 				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login,id_rol FROM usuarios WHERE id=?");
 				
 				prt.setInt(1, id);
@@ -89,9 +96,9 @@ public class ModeloUsuario extends Conector {
 					usuario.setNombre(result.getString(2));
 					usuario.setPassword(result.getString(3));
 					usuario.setFechaLogin(result.getDate(4));
-					Rol rol = new Rol();
-					rol.setId(result.getInt(5));
-					usuario.setRol(rol);
+
+					//debuelve el odjeto de rol
+					usuario.setRol(mRol.getRol(result.getInt(5)));
 					return usuario;	
 				}	
 				

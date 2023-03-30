@@ -1,10 +1,7 @@
 package controlador;
 
 import java.io.IOException;
-
-
-
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.Rol;
 import clases.Usuario;
+import modelo.ModeloRol;
 import modelo.ModeloUsuario;
 
 /**
@@ -38,6 +36,15 @@ public class Registrar extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloRol rolM = new ModeloRol();
+		rolM.conectar();
+		
+		
+		ArrayList <Rol> roles = rolM.getRoles();
+		
+		rolM.cerrar();
+		
+		request.setAttribute("roles", roles);
 		
 		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);
 		
@@ -59,7 +66,7 @@ public class Registrar extends HttpServlet {
 		
 		Date FechaLogin;
 		
-		int idRol =Integer.parseInt(request.getParameter("idRol"));
+		int idRol =Integer.parseInt(request.getParameter("rol"));
 		
 		
 		usuario.setNombre(nombre);

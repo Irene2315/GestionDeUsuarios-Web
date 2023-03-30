@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <%@  page import="java.sql.Date" %>
 
@@ -27,15 +28,21 @@
 		<p>Fecha Login:
 		<input type="date" name="fechaLogin" /> <br></p>
 		<br>
-		<p>Id rol:
-		<input type="text" name="idRol" /> <br></p>
+		
+		Roles:<select name="rol">
+	<option value="0"></option>
+		<c:forEach items="${roles}" var="rol">
+				<option value="${ rol.id}" > ${rol.nombre}</option>	
+			
+		</c:forEach>
+		</select>
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Guardar"/>
 	
 	
 </form>
-
+	
 		<a href="VerUsuarios" class="btn btn-primary">Volver</a>
 		
 		

@@ -20,7 +20,7 @@
       <th scope="col">Nombre</th>
       <th scope="col">Contraseña</th>
       <th scope="col">Fecha_Login</th>
-      <th scope="col">Id_Rol</th>
+      <th scope="col">Roles</th>
       <th scope="col"></th>
       <th scope="col"></th>
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
@@ -36,7 +36,7 @@
       <td>${usuario.nombre}</td>
       <td>${usuario.password}</td>
       <td>${usuario.fechaLogin}</td>
-      <td> ${usuario.rol.id} </td>
+      <td> ${usuario.rol.nombre} </td>
       
       <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>

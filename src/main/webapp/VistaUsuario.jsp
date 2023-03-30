@@ -18,7 +18,7 @@
 <p class="fw-bold" >Nombre: ${usuario.nombre}</p>
 <p class="fw-bold" >Contraseña: ${usuario.password}</p>
 <p class="fw-bold" >Fecha Login: ${usuario.fechaLogin}</p>
-<p class="fw-bold" >Id Rol: ${usuario.idRol}</p>
+<p class="fw-bold" >Rol: ${usuario.rol.nombre}</p>
 
 <a href="VerUsuarios" class="btn btn-primary">Volver</a>
 
