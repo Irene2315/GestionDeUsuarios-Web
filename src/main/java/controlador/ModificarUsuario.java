@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import clases.Rol;
 import clases.Usuario;
@@ -39,7 +40,13 @@ public class ModificarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
 
+		if (usuarioLogueado == null) {// no logeado
+			response.sendRedirect("LoginInicio");
+		} else {
+			
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		// usuario
@@ -60,6 +67,7 @@ public class ModificarUsuario extends HttpServlet {
 
 		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
 
+	}
 	}
 
 	/**
