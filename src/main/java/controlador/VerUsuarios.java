@@ -37,12 +37,7 @@ public class VerUsuarios extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
-		if (usuarioLogueado == null) {//no logeado
-			response.sendRedirect("LoginInicio");
-		} else {//si esta logueado
+		
 			ModeloUsuario usuarioM = new ModeloUsuario();
 			usuarioM.conectar();
 			ArrayList<Usuario> usuarios = usuarioM.getUsuarios();
@@ -51,7 +46,7 @@ public class VerUsuarios extends HttpServlet {
 			request.setAttribute("usuarios", usuarios);
 
 			request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);		}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

@@ -23,6 +23,7 @@
       <th scope="col">Fecha_Login</th>
       <th scope="col">Roles</th>
       <th scope="col"></th>
+      <th scope="col"></th>
       
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
       

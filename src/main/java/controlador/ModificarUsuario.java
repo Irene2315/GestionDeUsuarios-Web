@@ -40,12 +40,7 @@ public class ModificarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
-		if (usuarioLogueado == null) {// no logeado
-			response.sendRedirect("LoginInicio");
-		} else {
+		
 			
 		int id = Integer.parseInt(request.getParameter("id"));
 
@@ -68,7 +63,7 @@ public class ModificarUsuario extends HttpServlet {
 		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
 
 	}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
