@@ -40,12 +40,9 @@ public class Eliminar extends HttpServlet {
 		// enviarle el id a la base de datos para que elimine el odjeto
 		// visualizar la tabla con los cambios realizados (ver usuarios)
 
-		HttpSession session = request.getSession();
-		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		
 
-		if (usuarioLogueado == null) {// no logeado
-			response.sendRedirect("LoginInicio");
-		} else {
+		
 			int id = Integer.parseInt(request.getParameter("id"));
 
 			ModeloUsuario usuarioM = new ModeloUsuario();
@@ -59,7 +56,7 @@ public class Eliminar extends HttpServlet {
 			request.setAttribute("usuarios", usuarios);
 
 			request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
-		}
+		
 
 	}
 

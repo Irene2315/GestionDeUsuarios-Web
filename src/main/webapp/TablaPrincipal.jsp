@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-Hello, ${sessionScope.usuarioLogueado.nombre} eres ${sessionScope.usuarioLogueado.rol.nombre}
+
 
 	<table class="table">
 	
@@ -25,7 +25,7 @@ Hello, ${sessionScope.usuarioLogueado.nombre} eres ${sessionScope.usuarioLoguead
       <th scope="col"></th>
       
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
-      <td><a href="CerrarSesion" class="btn btn-dark">Cerrar Sesion </a> </td>
+      
      
     </tr>
   </thead>
