@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import clases.Usuario;
 import modelo.ModeloUsuario;
@@ -34,12 +33,6 @@ public class VerUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
-
-		if (usuarioLogueado == null) {// no logeado
-			response.sendRedirect("LoginInicio");
-		} else {
 		ModeloUsuario usuarioM = new ModeloUsuario();
 		
 		usuarioM.conectar();
@@ -47,7 +40,9 @@ public class VerUsuario extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		
-		Usuario usuario =usuarioM.getUsuario(id);
+		Usuario usuario = new Usuario();
+		
+		usuario =usuarioM.getUsuario(id);
 		
 		usuarioM.cerrar();
 		
@@ -56,7 +51,6 @@ public class VerUsuario extends HttpServlet {
 		request.getRequestDispatcher("VistaUsuario.jsp").forward(request, response);
 		
 		
-	}
 	}
 
 	/**
