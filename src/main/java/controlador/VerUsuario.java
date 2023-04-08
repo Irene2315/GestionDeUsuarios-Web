@@ -40,7 +40,9 @@ public class VerUsuario extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		
-		Usuario usuario =usuarioM.getUsuario(id);
+		Usuario usuario = new Usuario();
+		
+		usuario =usuarioM.getUsuario(id);
 		
 		usuarioM.cerrar();
 		
