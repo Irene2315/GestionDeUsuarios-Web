@@ -12,7 +12,7 @@
 <body>
 
 <% Usuario usuario = (Usuario)  request.getAttribute("usuario"); %>
-<h1 class="fw-bold" > Resgistrar Usuario</h1>
+<h1 class="fw-bold" > Registrar Usuario</h1>
 
 <form method="POST" action="Registrar">
 		
