@@ -27,13 +27,7 @@
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Guardar"/>
-	
-	
 </form>
-
-		<a href="VerUsuarios" class="btn btn-primary">Volver</a>
-		
-		
-
+		<a href="VerUsuarios" class="btn btn-primary">Volver</a>	
 </body>
 </html>

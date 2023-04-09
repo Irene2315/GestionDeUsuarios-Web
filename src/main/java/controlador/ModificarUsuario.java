@@ -38,42 +38,27 @@ public class ModificarUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ModeloUsuario usuarioM = new ModeloUsuario();
-		
 		usuarioM.conectar();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		
 		Usuario usuario = new Usuario();
 		
 		usuario = usuarioM.getUsuario(id);
 		
-		
 		request.setAttribute("usuario", usuario);
 		
-		
-		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
-		
-		
+		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Usuario usuario = new Usuario();
 		ModeloUsuario usuarioM = new ModeloUsuario();
 		
-		
-		
-		
 			int id = Integer.parseInt( request.getParameter("id"));
 			String nombre =request.getParameter("nombre");
 			String password = request.getParameter("password");
-			
-			
-			
-			
+				
 			SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
 			Date FechaLogin;
 			

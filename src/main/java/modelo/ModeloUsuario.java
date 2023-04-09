@@ -1,9 +1,4 @@
 package modelo;
-
-
-
-
-
 import java.sql.Date;
 
 import java.sql.PreparedStatement;
@@ -18,18 +13,13 @@ import conexion.Conector;
 
 public class ModeloUsuario extends Conector {
 
-	
-		
 		public ArrayList<Usuario> getUsuarios (){
-			
 			PreparedStatement prt;
 			ArrayList <Usuario> usuarios = new ArrayList <>();
 			Usuario usuario = new Usuario();
 			try {
 				prt = con.prepareStatement("SELECT id, nombre,password,fecha_login FROM usuarios ");
 				ResultSet resultado = prt.executeQuery();
-				
-				
 				
 				while(resultado.next()) {
 					usuario = new Usuario();
@@ -43,14 +33,11 @@ public class ModeloUsuario extends Conector {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return usuarios;
 			}
 		
 		public void  eliminarUsuario (int id) {
-			
 			PreparedStatement prt;
-			
 			try {
 				prt = con.prepareStatement("DELETE FROM `usuarios` WHERE id=?");
 				prt.setInt(1, id);
@@ -58,20 +45,12 @@ public class ModeloUsuario extends Conector {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			
-			
-			
+			}	
 		}
 		
 		public Usuario getUsuario (int id) {
-			
 			PreparedStatement prt;
-			
 			Usuario usuario = new Usuario();
-			
-			
 			try {
 				prt = con.prepareStatement("SELECT id,nombre, password, fecha_login FROM usuarios WHERE id=?");
 				prt.setInt(1, id);
@@ -90,46 +69,29 @@ public class ModeloUsuario extends Conector {
 				e.printStackTrace();
 			}
 			
-			return usuario;	
-			
-				
-			
-			
-		}
+			return usuario;		}
 	
 	public void modificarUsuario (Usuario usuario) {
 		
 		PreparedStatement prt;
-		
-		
 		try {
 			prt = con.prepareStatement("UPDATE usuarios SET nombre=?, password=?,fecha_login=? WHERE id=?");
 			
-			
 			prt.setString(1, usuario.getNombre());
 			prt.setString(2, usuario.getPassword());
-			
 			prt.setDate(3,new Date (usuario.getFechaLogin().getTime()));
-			
 			prt.setInt(4, usuario.getId());
 			
 			prt.executeUpdate();
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 	
 	public void registrarUsuario(Usuario usuario) {
 		
 		PreparedStatement prt;
-		
-		
-		
 		try {
 			prt = con.prepareStatement("INSERT INTO usuarios(nombre,password,fecha_login) VALUES (?,?,?)");
 			prt.setString(1,usuario.getNombre() );
@@ -140,11 +102,6 @@ public class ModeloUsuario extends Conector {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
-	}
-		
-		
-	
+		}	
+	}	
 }

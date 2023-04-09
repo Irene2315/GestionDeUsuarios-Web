@@ -29,10 +29,6 @@
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Enviar"/>
-		
-		
-	
-	
 </form>
 
 		<a href="VerUsuarios" class="btn btn-primary">Volver</a>

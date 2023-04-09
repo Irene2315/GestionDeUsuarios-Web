@@ -28,18 +28,11 @@ public class Eliminar extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//coger la id de la linea que he selecionado eliminar
 		//enviarle el id a la base de datos para que elimine el odjeto
-		//visualizar la tabla con los cambios realizados (ver usuarios)
-		
-		
-		
-		
+		//visualizar la tabla con los cambios realizados (ver usuarios)	
 	ModeloUsuario usuarioM = new ModeloUsuario();
 	
 	usuarioM.conectar();
@@ -47,7 +40,6 @@ public class Eliminar extends HttpServlet {
 	int id = Integer.parseInt(request.getParameter("id"));
 	
 	usuarioM.eliminarUsuario(id);
-	
 	
 	//visualizar
 	ArrayList <Usuario> usuarios = new ArrayList<>();
@@ -57,20 +49,13 @@ public class Eliminar extends HttpServlet {
 	usuarioM.cerrar();
 
 	request.setAttribute("usuarios", usuarios);
-	
-	
+
 	request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
-	
-	
 	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

@@ -10,10 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<%
-	ArrayList <Usuario> usuarios = (ArrayList <Usuario>) request.getAttribute("usuarios");
-	
-%>
+<% ArrayList <Usuario> usuarios = (ArrayList <Usuario>) request.getAttribute("usuarios"); %>
 	<table class="table">
 	
   <thead>
@@ -26,15 +23,11 @@
       <th scope="col"></th>
       <th scope="col"></th>
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
-     
     </tr>
   </thead>
   <tbody>
     
-    <% for (Usuario usuario : usuarios) {
-		
-	
-    %>
+    <% for (Usuario usuario : usuarios) {  %>
     <tr>
       <th scope="row"></th>
       <td><% out.println(usuario.getId()); %></td>
@@ -47,8 +40,7 @@
     </tr>
     <%
 		}%>  
-    
-    
+     
   </tbody>
 </table>
 

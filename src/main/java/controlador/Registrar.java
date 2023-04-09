@@ -38,15 +38,9 @@ public class Registrar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);
-		
-		
-		
+		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Usuario usuario = new Usuario();
@@ -57,19 +51,14 @@ public class Registrar extends HttpServlet {
 		SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
 		
 		Date FechaLogin;
-		
-
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
 		try {
-			
 			FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
-			
 			usuario.setFechaLogin(FechaLogin);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			e.printStackTrace(); }
 			
 		
 		

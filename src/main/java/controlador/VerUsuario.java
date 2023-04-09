@@ -38,10 +38,7 @@ public class VerUsuario extends HttpServlet {
 		usuarioM.conectar();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		
-		
 		Usuario usuario = new Usuario();
-		
 		usuario =usuarioM.getUsuario(id);
 		
 		usuarioM.cerrar();
@@ -49,8 +46,6 @@ public class VerUsuario extends HttpServlet {
 		request.setAttribute("usuario", usuario);
 		
 		request.getRequestDispatcher("VistaUsuario.jsp").forward(request, response);
-		
-		
 	}
 
 	/**
