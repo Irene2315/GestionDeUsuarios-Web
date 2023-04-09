@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<h1 class="fw-bold" > Inciar Sesion</h1>
+		<h1 class="fw-bold" > Iniciar Sesion</h1>
 		<form method="POST" action="LoginInicio">
 		
 		<p>Nombre:
@@ -16,13 +16,8 @@
 		<p>Contraseña:
 		<input type="password" name="password" /> <br></p>
 		<br>
-		
-		
-		
+	
 		<input type="submit" class="btn btn-secondary" value="Loguear"/>
-	
-	
-</form>
-		
+</form>	
 </body>
 </html>
