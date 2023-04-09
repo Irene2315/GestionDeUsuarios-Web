@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %> 
@@ -12,7 +11,6 @@
 <body>
 
 	<table class="table">
-	
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -23,8 +21,6 @@
       <th scope="col"></th>
       <th scope="col"></th>
       <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
-      
-     
     </tr>
   </thead>
   <tbody>
@@ -37,17 +33,13 @@
       <td>${usuario.password}</td>
       <td>${usuario.fechaLogin}</td>
       
-      
       <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
     </tr>
     
     </c:forEach>
-    
-    
   </tbody>
 </table>
-
 </body>
 </html>

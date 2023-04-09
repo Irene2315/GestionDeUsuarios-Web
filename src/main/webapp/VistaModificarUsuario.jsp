@@ -14,39 +14,27 @@
 </head>
 <body>
 
-
 	<h1 class="fw-bold">Modificar Usuario</h1>
-
+	
 	<form method="POST" action="ModificarUsuario">
 		<p class="fw-bold">
 			Id: ${usuario.id } <input type="hidden" name="id"
-				value="${usuario.id }" /> <br>
-		</p>
+				value="${usuario.id }" /> <br> </p>
 
 		<p class="fw-bold">
 			Nombre: <input type="text" name="nombre" value="${usuario.nombre}" />
-			<br>
-		</p>
+			<br> </p>
 		<br>
 		<p class="fw-bold">
 			Contraseña: <input type="text" name="password"
-				value="${usuario.password }" /> <br>
-		</p>
+				value="${usuario.password }" /> <br> </p>
 		<br>
 		<p class="fw-bold">
 			Fecha Login: <input type="date" name="fechaLogin"
 				value="${usuario.fechaLogin }" /> <br>
-		</p>
-		<br> 
-		
-		</P>
-	
+
 		<br> <input type="submit" class="btn btn-secondary"
 			value="Enviar" />
-
-
-
-
 	</form>
 
 	<a href="VerUsuarios" class="btn btn-primary">Volver</a>
