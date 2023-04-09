@@ -16,12 +16,9 @@ public class ModeloRol extends Conector {
 		PreparedStatement prt;
 		ArrayList <Rol> roles = new ArrayList <>();
 		Rol rol = new Rol();
-		
 			try {
 				prt = con.prepareStatement("SELECT id,nombre FROM roles ");
 				ResultSet resultado = prt.executeQuery();
-				
-				
 				
 				while(resultado.next()) {
 					rol = new Rol();
@@ -35,10 +32,6 @@ public class ModeloRol extends Conector {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			
-		
 		
 		return roles;
 		}
@@ -46,36 +39,26 @@ public class ModeloRol extends Conector {
 	public Rol getRol(int id) {
 		
 		PreparedStatement prt;
-		
 		Rol rol = new Rol();
-		
 		
 			try {
 				prt= con.prepareStatement("SELECT id,nombre FROM roles WHERE id=?");
 				prt.setInt(1, id);
 				
 				ResultSet result = prt.executeQuery();
-				
+
 				while(result.next()) {
 					rol.setId(result.getInt(1));
 					rol.setNombre(result.getString(2));
 					
-					return rol;
-					
+					return rol;					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return rol;
-		
-	
-			
-			
 		}
-		
-	
 	}
 
 

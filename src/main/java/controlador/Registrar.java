@@ -1,5 +1,4 @@
 package controlador;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,47 +17,27 @@ import clases.Usuario;
 import modelo.ModeloRol;
 import modelo.ModeloUsuario;
 
-/**
- * Servlet implementation class Registrar
- */
 @WebServlet("/Registrar")
 public class Registrar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Registrar() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ModeloRol rolM = new ModeloRol();
-		rolM.conectar();
-		
-		
+		rolM.conectar();		
 		ArrayList <Rol> roles = rolM.getRoles();
-		
 		rolM.cerrar();
 		
 		request.setAttribute("roles", roles);
-		
-		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);
-		
-		
-		}
+		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response); }
 	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		Usuario usuario = new Usuario();
 		ModeloUsuario usuarioM = new ModeloUsuario();
 		
@@ -66,37 +45,23 @@ public class Registrar extends HttpServlet {
 		String password=request.getParameter("password");
 		SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
 		
-		Date FechaLogin;
-		
+		Date FechaLogin;		
 		int idRol =Integer.parseInt(request.getParameter("rol"));
-		
-		
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
 		try {
-			
 			FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
 			
 			usuario.setFechaLogin(FechaLogin);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-		
+			e.printStackTrace(); }
 		Rol rol = new Rol();
 		rol.setId(idRol);
 		usuario.setRol(rol);
 		
-		
 		usuarioM.conectar();
-		
 		usuarioM.registrarUsuario(usuario);
-		
 		usuarioM.cerrar();
 		
-		response.sendRedirect("VerUsuarios");
-		
-	}
-
-}
+		response.sendRedirect("VerUsuarios");} }
