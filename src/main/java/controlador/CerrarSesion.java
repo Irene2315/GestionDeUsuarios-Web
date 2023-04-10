@@ -9,12 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CerrarSesion")
 public class CerrarSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
+      
     public CerrarSesion() {
         super();
     }
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
@@ -22,7 +20,6 @@ public class CerrarSesion extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 }
