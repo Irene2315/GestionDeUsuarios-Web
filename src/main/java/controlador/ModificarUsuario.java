@@ -47,26 +47,59 @@ public class ModificarUsuario extends HttpServlet {
 			response.sendRedirect("LoginInicio");
 		} else {
 			
-		int id = Integer.parseInt(request.getParameter("id"));
+		if (usuarioLogueado.getRol().getNombre().equals("Gerente")) {
+			int id = Integer.parseInt(request.getParameter("id"));
+	        
+			// usuario
+			ModeloUsuario usuarioM = new ModeloUsuario();
+			usuarioM.conectar();
+			Usuario usuario = usuarioM.getUsuario(id);
+			usuarioM.cerrar();
 
-		// usuario
-		ModeloUsuario usuarioM = new ModeloUsuario();
-		usuarioM.conectar();
-		Usuario usuario = usuarioM.getUsuario(id);
-		usuarioM.cerrar();
+			request.setAttribute("usuario", usuario);
 
-		request.setAttribute("usuario", usuario);
+			// rol
+			ModeloRol rolM = new ModeloRol();
+			rolM.conectar();
+			ArrayList<Rol> roles = rolM.getRoles();
+			rolM.cerrar();
 
-		// rol
-		ModeloRol rolM = new ModeloRol();
-		rolM.conectar();
-		ArrayList<Rol> roles = rolM.getRoles();
-		rolM.cerrar();
+			request.setAttribute("roles", roles);
 
-		request.setAttribute("roles", roles);
+			request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
+		}
+		
+		else { 
+			if (usuarioLogueado.getId()==Integer.parseInt(request.getParameter("id"))) {
+		
+			int id = Integer.parseInt(request.getParameter("id"));
+	        
+			// usuario
+			ModeloUsuario usuarioM = new ModeloUsuario();
+			usuarioM.conectar();
+			Usuario usuario = usuarioM.getUsuario(id);
+			usuarioM.cerrar();
 
-		request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
+			request.setAttribute("usuario", usuario);
 
+			// rol
+			ModeloRol rolM = new ModeloRol();
+			rolM.conectar();
+			ArrayList<Rol> roles = rolM.getRoles();
+			rolM.cerrar();
+
+			request.setAttribute("roles", roles);
+
+			request.getRequestDispatcher("VistaModificarUsuario.jsp").forward(request, response);
+			
+		}
+			
+			else {
+				response.sendRedirect("VerUsuarios");
+			}
+		
+		}
+		
 	}
 	}
 

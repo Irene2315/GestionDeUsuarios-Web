@@ -36,9 +36,10 @@ Hello, ${sessionScope.usuarioLogueado.nombre} eres ${sessionScope.usuarioLoguead
       <th scope="row"></th>
       <td>${usuario.id}</td>
       <td>${usuario.nombre}</td>
-      <td>${usuario.password}</td>
+      <td>${(usuario.password)}</td>
       <td>${usuario.fechaLogin}</td>
       <td> ${usuario.rol.nombre} </td>
+      
       
       <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
