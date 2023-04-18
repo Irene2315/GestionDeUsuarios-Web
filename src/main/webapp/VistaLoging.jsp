@@ -16,13 +16,8 @@
 		<p>Contraseña:
 		<input type="password" name="password" /> <br></p>
 		<br>
-		
-		
-		
+	
 		<input type="submit" class="btn btn-secondary" value="Loguear"/>
-	
-	
-</form>
-		
+</form>	
 </body>
 </html>
