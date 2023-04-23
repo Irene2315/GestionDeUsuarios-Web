@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import clases.Rol;
 import clases.Usuario;
 import modelo.ModeloRol;
@@ -78,6 +80,9 @@ public class Registrar extends HttpServlet {
 		
 		String nombre =request.getParameter("nombre");
 		String password=request.getParameter("password");
+		
+		String Ecripassword = DigestUtils.md5Hex(password);
+		
 		SimpleDateFormat formatFecha= new SimpleDateFormat ("yyyy-MM-dd");
 		
 		Date FechaLogin;
@@ -86,7 +91,7 @@ public class Registrar extends HttpServlet {
 		
 		
 		usuario.setNombre(nombre);
-		usuario.setPassword(password);
+		usuario.setPassword(Ecripassword );
 		try {
 			
 			FechaLogin = formatFecha.parse(request.getParameter("fechaLogin"));
