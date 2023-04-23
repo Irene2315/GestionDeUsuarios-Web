@@ -46,6 +46,8 @@ public class Eliminar extends HttpServlet {
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("LoginInicio");
 		} else {
+			
+			if (usuarioLogueado.getRol().getNombre().equals("Gerente")) {
 			int id = Integer.parseInt(request.getParameter("id"));
 
 			ModeloUsuario usuarioM = new ModeloUsuario();
@@ -59,6 +61,30 @@ public class Eliminar extends HttpServlet {
 			request.setAttribute("usuarios", usuarios);
 
 			request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
+		}
+			else {
+				if (usuarioLogueado.getId()==Integer.parseInt(request.getParameter("id"))) {
+					
+						int id = Integer.parseInt(request.getParameter("id"));
+
+						ModeloUsuario usuarioM = new ModeloUsuario();
+						usuarioM.conectar();
+						usuarioM.eliminarUsuario(id);
+						// visualizar
+						ArrayList<Usuario> usuarios = new ArrayList<>();
+						usuarios = usuarioM.getUsuarios();
+						usuarioM.cerrar();
+
+						request.setAttribute("usuarios", usuarios);
+
+						request.getRequestDispatcher("TablaPrincipal.jsp").forward(request, response);
+				
+				}
+				else {
+					response.sendRedirect("VerUsuarios");
+					
+				}
+			}
 		}
 
 	}

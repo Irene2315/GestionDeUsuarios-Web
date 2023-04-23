@@ -36,15 +36,31 @@ Hello, ${sessionScope.usuarioLogueado.nombre} eres ${sessionScope.usuarioLoguead
       <th scope="row"></th>
       <td>${usuario.id}</td>
       <td>${usuario.nombre}</td>
-      <td>${usuario.password}</td>
+      <td>${(usuario.password)}</td>
       <td>${usuario.fechaLogin}</td>
       <td> ${usuario.rol.nombre} </td>
       
+       
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
       <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
-    </tr>
-    
+	  </c:if>
+      
+      
+     
+      <c:if test="${sessionScope.usuarioLogueado.nombre == usuario.nombre}">
+      	<c:if test="${!(sessionScope.usuarioLogueado.rol.id == 1)}">
+      <td><a href="VerUsuario?id=${usuario.id}" class="btn btn-primary ">Ver</a></td>
+      <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
+      <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
+	  </c:if>
+	 </c:if>
+	
+	
+		
+      
+     
     </c:forEach>
     
     

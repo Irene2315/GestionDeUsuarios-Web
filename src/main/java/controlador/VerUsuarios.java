@@ -19,6 +19,8 @@ import modelo.ModeloUsuario;
  */
 @WebServlet("/VerUsuarios")
 public class VerUsuarios extends HttpServlet {
+	
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +41,7 @@ public class VerUsuarios extends HttpServlet {
 		if (usuarioLogueado == null) {//no logeado
 			response.sendRedirect("LoginInicio");
 		} else {//si esta logueado
+			
 			ModeloUsuario usuarioM = new ModeloUsuario();
 			usuarioM.conectar();
 			ArrayList<Usuario> usuarios = usuarioM.getUsuarios();

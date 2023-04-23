@@ -43,17 +43,26 @@ public class Registrar extends HttpServlet {
 		if (usuarioLogueado == null) {// no logeado
 			response.sendRedirect("LoginInicio");
 		} else {
-		ModeloRol rolM = new ModeloRol();
-		rolM.conectar();
-		
-		
-		ArrayList <Rol> roles = rolM.getRoles();
-		
-		rolM.cerrar();
-		
-		request.setAttribute("roles", roles);
-		
-		request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);
+			
+			if (usuarioLogueado.getRol().getNombre().equals("Gerente")) {
+				
+				ModeloRol rolM = new ModeloRol();
+				rolM.conectar();
+				
+				
+				ArrayList <Rol> roles = rolM.getRoles();
+				
+				rolM.cerrar();
+				
+				request.setAttribute("roles", roles);
+				
+				request.getRequestDispatcher("VistaCrear.jsp").forward(request, response);
+				
+			}
+			
+			else {
+				response.sendRedirect("VerUsuarios");
+			}
 		
 		
 		}
